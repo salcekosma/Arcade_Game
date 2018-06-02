@@ -20,7 +20,30 @@ Enemy.prototype.update = function(dt) {
   if (this.x >= 505) {
       this.x = 0;
   }
+  this.checkCollision();
 };
+
+Enemy.prototype.checkCollision = function() {
+  console.log("iNSIDE COLLISION");
+  for (var i = 0; i < allEnemies.length; i++) {
+    if (player.x < allEnemies[i].x + 60 &&
+      player.x + 60 > allEnemies[i].x &&
+      player.y < allEnemies[i].y + 60 &&
+      player.y + 60 > allEnemies[i].y) {
+      reset();
+      console.log("Collisionnnn");
+    }
+  }
+};
+
+function reset() {
+  player.x = 202;
+  player.y = 383;
+  this.score = 0;
+};
+
+
+
 
 
 
@@ -51,12 +74,12 @@ Player.prototype.render = function() {
 
 
 var allEnemies = [];
-var enemy1 = new Enemy(0, 82.50, 100);
-var enemy2 = new Enemy(0, 165, 200);
-var enemy3 = new Enemy(0, 247.50, 150);
+var enemy1 = new Enemy(0, 60, 100);
+var enemy2 = new Enemy(0, 140, 200);
+var enemy3 = new Enemy(0, 220, 150);
 allEnemies.push(enemy1, enemy2, enemy3);
 
-var player = new Player(200, 380, 0);
+var player = new Player(202, 383, 0);
 
 // This listens for key presses and sends the keys to your
 
