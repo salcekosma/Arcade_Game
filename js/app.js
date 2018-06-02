@@ -22,6 +22,8 @@ Enemy.prototype.update = function(dt) {
     }
 };
 
+
+
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -38,6 +40,11 @@ var Player = function (x, y, speed) {
   this.sprite = 'images/char-boy.png'
 }
 
+Player.prototype.update = function() {};
+
+Player.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
