@@ -49,35 +49,58 @@ Player.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var allEnemies = [];
+var allEnemies = new Array();
+
+var create_enemies = function() {
+
+    var bug = 4;
+
+
+    var random_speed = function() {
+        return Math.floor(Math.random() * (300 - 80)) + 80;
+    };
+
+    var random_y = function() {
+        var postions = [60, 143, 226];
+        return positions[Math.floor(Math.random() * 3)];
+    };
+
+    for (var i = 0; i < bugs; i++) {
+        var bug = new Enemy();
+        bug.speed = random_speed;
+        bug.y = random_y;
+        bug.x = 200;
+        allEnemies.push(bug);
+    }
+};
+
 var player = new Player(200, 380, 0);
 
 // This listens for key presses and sends the keys to your
 
 Player.prototype.handleInput = function(direction) {
-  if (direction == 'left') {
-    this.x -= 100;
-    if (this.x <= 0) { // blocks getting outside left
-      this.x = 0;
-    }
-  } else if (direction == 'right') {
-    this.x += 100;
-    if (this.x >= 400) { //blocks getting outside right
-      this.x = 400;
-    }
-  } else if (direction == 'up') {
-    this.y -= 82.50;
-    if (this.y <= 0){
-      this.y = -30;
-    }
-  } else if (direction == 'down') {
-    this.y += 82.50;
-    if (this.y >= 380) { //blocks getting outside right
-      this.y = 380;
-    }
+    if (direction == 'left') {
+      this.x -= 100;
+      if (this.x <= 0) { // blocks getting outside left
+        this.x = 0;
+      }
+    } else if (direction == 'right') {
+      this.x += 100;
+      if (this.x >= 400) { //blocks getting outside right
+        this.x = 400;
+      }
+    } else if (direction == 'up') {
+      this.y -= 82.50;
+      if (this.y <= 0) {
+        this.y = -30;
+      }
+    } else if (direction == 'down') {
+      this.y += 82.50;
+      if (this.y >= 380) { //blocks getting outside right
+        this.y = 380;
+      }
 
-  }
-
+    }
 }
 // Player.handleInput() method. You don't need to modify this.
 document.addEventListener('keyup', function(e) {
