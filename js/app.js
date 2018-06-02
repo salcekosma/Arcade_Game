@@ -18,7 +18,7 @@ Enemy.prototype.update = function(dt) {
   // all computers.
   this.x = this.x + this.speed * dt;
   if (this.x >= 505) {
-    this.x = 0;
+      this.x = 0;
   }
 };
 
@@ -49,30 +49,12 @@ Player.prototype.render = function() {
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 
-var allEnemies = new Array();
 
-var create_enemies = function() {
-
-    var bug = 4;
-
-
-    var random_speed = function() {
-        return Math.floor(Math.random() * (300 - 80)) + 80;
-    };
-
-    var random_y = function() {
-        var postions = [60, 143, 226];
-        return positions[Math.floor(Math.random() * 3)];
-    };
-
-    for (var i = 0; i < bugs; i++) {
-        var bug = new Enemy();
-        bug.speed = random_speed;
-        bug.y = random_y;
-        bug.x = 200;
-        allEnemies.push(bug);
-    }
-};
+var allEnemies = [];
+var enemy1 = new Enemy(0, 82.50, 100);
+var enemy2 = new Enemy(0, 165, 200);
+var enemy3 = new Enemy(0, 247.50, 150);
+allEnemies.push(enemy1, enemy2, enemy3);
 
 var player = new Player(200, 380, 0);
 
