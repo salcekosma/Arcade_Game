@@ -23,6 +23,7 @@ Enemy.prototype.update = function(dt) {
   this.checkCollision();
 };
 
+//Create function collision
 Enemy.prototype.checkCollision = function() {
   console.log("iNSIDE COLLISION");
   for (var i = 0; i < allEnemies.length; i++) {
@@ -36,16 +37,12 @@ Enemy.prototype.checkCollision = function() {
   }
 };
 
+//Create function reset that goes inside function collision
 function reset() {
   player.x = 202;
   player.y = 383;
   this.score = 0;
 };
-
-
-
-
-
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -60,7 +57,7 @@ var Player = function(x, y, speed) {
   this.x = x;
   this.y = y;
   this.speed = speed;
-  this.sprite = 'images/char-boy.png'
+  this.sprite = 'images/char-boy.png';
 }
 
 Player.prototype.update = function() {};
@@ -83,6 +80,12 @@ var player = new Player(202, 383, 0);
 
 // This listens for key presses and sends the keys to your
 
+Player.prototype.winCondition = function(direction){
+  if (this.y === 0){
+    this.y = 383;
+  }
+}
+
 Player.prototype.handleInput = function(direction) {
     if (direction == 'left') {
       this.x -= 100;
@@ -97,12 +100,12 @@ Player.prototype.handleInput = function(direction) {
     } else if (direction == 'up') {
       this.y -= 82.50;
       if (this.y <= 0) {
-        this.y = -30;
+        this.y = 383;
       }
     } else if (direction == 'down') {
       this.y += 82.50;
       if (this.y >= 380) { //blocks getting outside right
-        this.y = 380;
+        this.y = 380; // WIN!!!!
       }
 
     }
