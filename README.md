@@ -22,5 +22,5 @@ Losing-instructions
 ===============================
 The player touches any of the bugs.
 
-![Alt text](Arcade_Game/Arcade_Project_Screen_Shot.pngraw=true "Optional Title")
+![Game Screenshot](Arcade_Game/Arcade_Project_Screen_Shot.pngraw=true "Optional Title")
 
