@@ -23,4 +23,4 @@ Losing-instructions
 The player touches any of the bugs.
 
 
-![Alt text](/Users/luissalcedo/Desktop/Udacity/Full-Front-End-Google-Scolarship/Projects/lesk-frontend-nanodegree-arcade-game/Arcade_Project_Screen_Shot ?raw=true "Optional Title")
+![Alt text](Arcade_Game/Arcade_Project_Screen_Shot.png ?raw=true "Optional Title")
