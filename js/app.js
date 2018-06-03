@@ -1,5 +1,5 @@
 // Enemies our player must avoid
-var Enemy = function(x, y, speed) {
+const Enemy = function(x, y, speed) {
   // Variables applied to each of our instances go here,
   // we've provided one for you to get started
   this.x = x;
@@ -25,20 +25,19 @@ Enemy.prototype.update = function(dt) {
 
 //Create function collision
 Enemy.prototype.checkCollision = function() {
-  console.log("iNSIDE COLLISION");
   for (var i = 0; i < allEnemies.length; i++) {
     if (player.x < allEnemies[i].x + 60 &&
       player.x + 60 > allEnemies[i].x &&
       player.y < allEnemies[i].y + 60 &&
       player.y + 60 > allEnemies[i].y) {
-      reset();
-      console.log("Collisionnnn");
+      gameOver();
+      alert("Auuuch!. You have to restart.");
     }
   }
 };
 
 //Create function reset that goes inside function collision
-function reset() {
+function gameOver() {
   player.x = 202;
   player.y = 383;
   this.score = 0;
@@ -53,7 +52,7 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-var Player = function(x, y, speed) {
+const Player = function(x, y, speed) {
   this.x = x;
   this.y = y;
   this.speed = speed;
@@ -65,6 +64,7 @@ Player.prototype.update = function() {};
 Player.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
+
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
@@ -80,11 +80,7 @@ var player = new Player(202, 383, 0);
 
 // This listens for key presses and sends the keys to your
 
-Player.prototype.winCondition = function(direction){
-  if (this.y === 0){
-    this.y = 383;
-  }
-}
+
 
 Player.prototype.handleInput = function(direction) {
     if (direction == 'left') {
@@ -101,13 +97,14 @@ Player.prototype.handleInput = function(direction) {
       this.y -= 82.50;
       if (this.y <= 0) {
         this.y = 383;
+        alert('You have won! Coming back to base.');
       }
     } else if (direction == 'down') {
       this.y += 82.50;
       if (this.y >= 380) { //blocks getting outside right
         this.y = 380; // WIN!!!!
-      }
 
+      }
     }
 }
 // Player.handleInput() method. You don't need to modify this.
